@@ -1,10 +1,10 @@
 # theme
 
-> Boilerplate theme
+> scgcommerce theme
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 

@@ -10,7 +10,10 @@ const params: UseCategoryFactoryParams<Category, any> = {
     console.log('Mocked: categorySearch');
     const { customQuery, ...searchParams } = params;
 
-    return await context.$boilerplate.api.getCategory(searchParams, customQuery);
+    return await context.$scgcommerce.api.getCategory(
+      searchParams,
+      customQuery
+    );
   }
 };
 

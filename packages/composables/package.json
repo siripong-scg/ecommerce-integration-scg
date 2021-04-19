@@ -1,5 +1,5 @@
 {
-  "name": "@vue-storefront/boilerplate",
+  "name": "@vue-storefront/scgcommerce",
   "version": "2.3.0-rc.3",
   "private": true,
   "sideEffects": false,
@@ -13,7 +13,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@vue-storefront/boilerplate-api": "^2.3.0-rc.3",
+    "@vue-storefront/scgcommerce-api": "^2.3.0-rc.3",
     "@vue-storefront/core": "^2.3.0-rc.3"
   },
   "peerDependencies": {

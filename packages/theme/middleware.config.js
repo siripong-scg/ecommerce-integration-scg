@@ -1,8 +1,12 @@
 module.exports = {
   integrations: {
-    boilerplate: {
-      location: '@vue-storefront/boilerplate-api/server',
-      configuration: {}
+    scgcommerce: {
+      location: '@vue-storefront/scgcommerce-api/server',
+      configuration: {
+        api: {
+          uri: 'https://qa.bigthailand.com/api'
+        }
+      }
     }
   }
 };
