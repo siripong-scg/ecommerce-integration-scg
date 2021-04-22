@@ -4,5 +4,7 @@
   "singleQuote": true,
   "arrowParens": "always",
   "tabWidth": 2,
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "printWidth": 120,
+  "trailingComma": "none"
 }

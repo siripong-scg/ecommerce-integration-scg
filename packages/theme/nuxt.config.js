@@ -41,8 +41,9 @@ export default {
     ]
   },
   loading: { color: '#fff' },
-  plugins: [],
+  plugins: [{ src: '~/plugins/vue-tailwind' }],
   buildModules: [
+    '@nuxtjs/tailwindcss',
     // to core
     '@nuxt/typescript-build',
     '@nuxtjs/style-resources',
@@ -78,14 +79,9 @@ export default {
     project-only-end */
     ['@vue-storefront/scgcommerce/nuxt', {}]
   ],
-  modules: [
-    'nuxt-i18n',
-    'cookie-universal-nuxt',
-    'vue-scrollto/nuxt',
-    '@vue-storefront/middleware/nuxt'
-  ],
+  modules: ['nuxt-i18n', 'cookie-universal-nuxt', 'vue-scrollto/nuxt', '@vue-storefront/middleware/nuxt'],
   i18n: {
-    locales: ['en'],
+    locales: ['en', 'th'],
     defaultLocale: 'en',
     strategy: 'no_prefix',
     vueI18n: {
@@ -94,7 +90,7 @@ export default {
         en: {
           welcome: 'Welcome 1'
         },
-        de: {
+        th: {
           welcome: 'Welcome 2'
         }
       }
@@ -127,5 +123,8 @@ export default {
         return { x: 0, y: 0 };
       }
     }
+  },
+  tailwindcss: {
+    jit: true
   }
 };

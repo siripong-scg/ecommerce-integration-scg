@@ -21,3 +21,18 @@ export type Category = {
 export type CategoryFilter = Record<string, unknown>;
 export type ShippingMethod = Record<string, unknown>;
 export type LineItem = Record<string, unknown>;
+
+export type ISearchSuggestionParams = {
+  lang: string;
+  userTypes: string;
+  orgIdfier: string;
+  keyword: string;
+  limit: number;
+  page: number;
+}
+
+export type ISearchSuggestion = {
+  code: number;
+  group: string;
+  name: string;
+}

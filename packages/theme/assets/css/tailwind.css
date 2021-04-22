@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+@layer components {
+  /* Button Component */
+  .btn, .btn.btn-primary {
+    @apply bg-red hover:bg-fireBrick text-white px-4 rounded-3xl text-body2 disabled:bg-lightSilver outline-none focus:outline-none transition-all font-medium focus:ring-2 focus:ring-red;
+    /* border: 3px solid transparent; */
+    line-height: 35px;
+    height: 36px;
+  }
+
+  .btn.btn-secondary {
+    @apply bg-slateGray1 hover:bg-slateGray2 active:border-slateGray1 disabled:bg-lightSilver focus:ring-slateGray1;
+  }
+
+  .btn.btn-black {
+    @apply bg-black hover:bg-dark active:border-black disabled:bg-lightSilver focus:ring-black;
+  }
+
+  /* Button Outlined */
+  .btn.outline, .btn.btn-primary.outline {
+    @apply bg-white hover:bg-mistyRose text-red border-red border-solid font-bold disabled:bg-white disabled:text-lightSilver disabled:border-lightSilver;
+    border-width: 1px;
+  }
+
+  .btn.btn-secondary.outline {
+    @apply hover:bg-whiteSmoke text-slateGray1 border-slateGray1 disabled:bg-white disabled:text-lightSilver disabled:border-lightSilver;
+  }
+
+  .btn.btn-black.outline {
+    @apply hover:bg-whiteSmoke text-black border-black disabled:bg-white disabled:text-lightSilver disabled:border-lightSilver;
+  }
+
+  /* Button Size */
+  .btn.large {
+    @apply px-6;
+    line-height: 47px;
+    height: 48px;
+  }
+
+  .btn.small {
+    @apply text-body3;
+    line-height: 27px;
+    height: 28px;
+  }
+}
