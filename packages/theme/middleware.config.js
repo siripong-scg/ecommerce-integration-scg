@@ -4,7 +4,7 @@ module.exports = {
       location: '@vue-storefront/scgcommerce-api/server',
       configuration: {
         api: {
-          uri: 'http://localhost:8081/api',
+          uri: 'https://www.bigthailand.com/api',
           timeout: 60 * 1000
         }
       }

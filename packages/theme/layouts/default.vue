@@ -1,32 +1,19 @@
 <template>
-  <div>
-    <LazyHydrate when-visible>
-      <AppHeader />
-    </LazyHydrate>
-
-    <div>
-      <nuxt :key="$route.fullPath" />
-    </div>
-
-    <LazyHydrate when-visible>
-      <AppFooter />
-    </LazyHydrate>
-  </div>
+  <v-app light>
+    <Header />
+    <Nuxt />
+    <Footer />
+  </v-app>
 </template>
 
 <script>
-import LazyHydrate from 'vue-lazy-hydration';
-import AppHeader from '~/layouts/AppHeader';
-import AppFooter from '~/layouts/AppFooter';
+import Header from '~/components/partials/Header';
+import Footer from '~/components/partials/Footer';
 
 export default {
-  name: 'DefaultLayout',
   components: {
-    AppFooter,
-    LazyHydrate,
-    AppHeader
+    Header,
+    Footer
   }
 };
 </script>
-
-<style lang="scss"></style>
