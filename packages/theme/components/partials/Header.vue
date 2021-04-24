@@ -1,14 +1,14 @@
 <template>
-  <Nav/>
+  <Nav />
 </template>
 
 <script>
-  import Nav from './Nav'
+import Nav from './Nav';
 
-  export default {
-    name: 'App',
-    components: {
-      Nav,
-    },
+export default {
+  name: 'App',
+  components: {
+    Nav
   }
+};
 </script>

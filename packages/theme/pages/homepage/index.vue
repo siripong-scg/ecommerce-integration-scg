@@ -59,38 +59,38 @@ export default {
     };
   },
   async mounted() {
-    if (!$nuxt.$auth.loggedIn) {
-      if (this.$route.query.signupToken !== undefined) {
-        this.authProvider = this.$route.query.authProvider;
-        this.socialEmail = this.$route.query.email;
-        this.$modal.show('SocialLoginModal');
-      } else if (this.$route.query.resetPassToken !== undefined) {
-        this.$modal.show('ResetPasswordModal');
-      } else if (this.$route.query.accessToken !== undefined) {
-        this.getUserInfo(this.$route.query.accessToken);
-      }
-    }
+    // if (!$nuxt.$auth.loggedIn) {
+    //   if (this.$route.query.signupToken !== undefined) {
+    //     this.authProvider = this.$route.query.authProvider;
+    //     this.socialEmail = this.$route.query.email;
+    //     this.$modal.show('SocialLoginModal');
+    //   } else if (this.$route.query.resetPassToken !== undefined) {
+    //     this.$modal.show('ResetPasswordModal');
+    //   } else if (this.$route.query.accessToken !== undefined) {
+    //     this.getUserInfo(this.$route.query.accessToken);
+    //   }
+    // }
   },
   methods: {
     async getUserInfo(accessToken) {
-      this.$nuxt.$loading.start();
-      await this.$repositories.user
-        .getUserInfo(accessToken)
-        .then((res) => {
-          if (res.userId) {
-            this.$auth.setToken('local', `Bearer ${accessToken}`);
-            this.$axios.setToken(accessToken, 'Bearer');
-            this.$auth.setRefreshToken('local', false);
-            res.preferredLanguage = 'th'; /* TODO: Fix to use TH as default */
-            res.orgIdfier = 'scg';
-            this.$auth.setUser(res);
-            this.$nuxt.$loading.finish();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.$nuxt.$loading.finish();
-        });
+      // this.$nuxt.$loading.start();
+      // await this.$repositories.user
+      //   .getUserInfo(accessToken)
+      //   .then((res) => {
+      //     if (res.userId) {
+      //       this.$auth.setToken('local', `Bearer ${accessToken}`);
+      //       this.$axios.setToken(accessToken, 'Bearer');
+      //       this.$auth.setRefreshToken('local', false);
+      //       res.preferredLanguage = 'th'; /* TODO: Fix to use TH as default */
+      //       res.orgIdfier = 'scg';
+      //       this.$auth.setUser(res);
+      //       this.$nuxt.$loading.finish();
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     this.$nuxt.$loading.finish();
+      //   });
     }
   }
 };

@@ -9,7 +9,7 @@ export default async function getCategories({ client, config }, params) {
   // console.log({ payload });
   // console.log({ client });
 
-  const endpoint = '/assets-dynamic/categories/all_en.json';
+  const endpoint = '/assets-dynamic/categories/all_th.json';
   const response = await client.get(endpoint);
   return response.data;
 }

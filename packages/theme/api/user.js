@@ -4,8 +4,7 @@
 
 export default ($axios) => (resource) => ({
   guestLogin() {
-    const endpoint =
-      '/api-gateway-service/auth/guestlogin?lang=en&userType=buyer&orgIdfier=scg&b-uid=1.0.459';
+    const endpoint = '/api-gateway-service/auth/guestlogin?lang=en&userType=buyer&orgIdfier=scg&b-uid=1.0.459';
     console.log('GET', endpoint);
 
     return $axios.$get(endpoint);
@@ -24,7 +23,7 @@ export default ($axios) => (resource) => ({
       staySignedIn: registerData.staySignedIn,
       phoneCountryCode: registerData.phoneCountryCode,
       customFields: registerData.customFields, // { 'cookieEnabled':true, 'subscribeNewsletters':false, 'sharePersonalInfo':false }
-      occupation: registerData.occupation,
+      occupation: registerData.occupation
     };
 
     const endpoint = '/buyer-service/auth/signup';
@@ -64,7 +63,7 @@ export default ($axios) => (resource) => ({
       newPassword,
       token,
       currentPassword,
-      userId: user.userId,
+      userId: user.userId
     };
 
     const endpoint = '/authentication-service/user/change-password';
@@ -78,7 +77,7 @@ export default ($axios) => (resource) => ({
       locale: requestOTPData.locale,
       phone: requestOTPData.phone,
       email: requestOTPData.email,
-      userParams: requestOTPData.userParams,
+      userParams: requestOTPData.userParams
     };
 
     const endpoint = '/authentication-service/user/OTP';
@@ -90,7 +89,7 @@ export default ($axios) => (resource) => ({
   verifyOTP(otpId, otp) {
     const payload = {
       otpId,
-      otp,
+      otp
     };
 
     const endpoint = '/authentication-service/user/OTP/verify';
@@ -105,7 +104,7 @@ export default ($axios) => (resource) => ({
       userType: resetPassData.userType,
       orgIdfier: resetPassData.orgIdfier,
       useremail: resetPassData.useremail,
-      phoneNo: resetPassData.phoneNo,
+      phoneNo: resetPassData.phoneNo
     };
 
     const endpoint = '/buyer-service/auth/send-reset-link';
@@ -121,14 +120,7 @@ export default ($axios) => (resource) => ({
     return $axios.$get(endpoint);
   },
 
-  updateProfile(
-    user,
-    fullName,
-    phoneNo,
-    email,
-    occupation,
-    communicationChannels,
-  ) {
+  updateProfile(user, fullName, phoneNo, email, occupation, communicationChannels) {
     const payload = {
       lang: 'th',
       userId: user.userId,
@@ -139,7 +131,7 @@ export default ($axios) => (resource) => ({
       businessType: user.businessType || 'PERSONAL',
       occupation,
       companyProfile: user.companyProfile || null,
-      communicationChannels,
+      communicationChannels
     };
     const endpoint = '/buyer-service/profile';
     console.log('PUT', endpoint, payload);
@@ -162,7 +154,7 @@ export default ($axios) => (resource) => ({
       companyName: companyProfile.name,
       companyPhone: companyProfile.phone,
       companyAddress: companyProfile.address,
-      companyEmail: companyProfile.email,
+      companyEmail: companyProfile.email
     };
 
     const endpoint = '/buyer-service/profile';
@@ -178,7 +170,7 @@ export default ($axios) => (resource) => ({
       orgIdfier: user.orgIdfier || 'scg',
       userId: user.userId,
       status: 'OPEN',
-      reason: 'no reason',
+      reason: 'no reason'
     };
 
     const endpoint = '/buyer-service/auth/user-delete-request';
@@ -195,7 +187,7 @@ export default ($axios) => (resource) => ({
       userId: user.userId,
       limit,
       page,
-      selectionStatus,
+      selectionStatus
     };
 
     const endpoint = '/promotion-service/promotions/coupon/users/mycpns';
@@ -209,7 +201,7 @@ export default ($axios) => (resource) => ({
     const payload = {
       lang: user.preferredLanguage || 'th',
       orgIdfier: user.orgIdfier || 'scg',
-      userId: user.userId,
+      userId: user.userId
     };
 
     console.log('POST', endpoint, payload);
@@ -237,7 +229,7 @@ export default ($axios) => (resource) => ({
       orgIdfier: user.orgIdfier,
       price,
       sellerId,
-      skuNumber,
+      skuNumber
     };
 
     const endpoint = '/buyer-service/wishlists';
@@ -258,7 +250,7 @@ export default ($axios) => (resource) => ({
       socialId: requestOTPData.socialId,
       authProvider: requestOTPData.authProvider,
       userId: requestOTPData.userId,
-      userParams: requestOTPData.userParams,
+      userParams: requestOTPData.userParams
     };
     const endpoint = '/authentication-service/user/OTP';
     console.log('POST', endpoint, payload);
@@ -282,7 +274,7 @@ export default ($axios) => (resource) => ({
       limit,
       page,
       tabType,
-      itemType,
+      itemType
     };
 
     const endpoint = `/order-service/savedcards/${user.userId}?userCardId=${userCardId}&lang=${user.preferredLanguage}&userType=${user.userTypes[0]}&orgIdfier=scg`;
@@ -301,12 +293,12 @@ export default ($axios) => (resource) => ({
       otp: verifyOTPData.otp,
       phone: verifyOTPData.phone,
       buyerName: verifyOTPData.buyerName,
-      type: verifyOTPData.type,
+      type: verifyOTPData.type
     };
 
     const endpoint = '/order-service/otp/verify/send-sms';
     console.log('POST', endpoint, payload);
-    return $axios.$post(endpoint, payload)
+    return $axios.$post(endpoint, payload);
   },
 
   login(payload) {
@@ -326,11 +318,10 @@ export default ($axios) => (resource) => ({
   getUserInfo(accessToken) {
     const axiosConfig = {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+        Authorization: `Bearer ${accessToken}`
+      }
     };
-    const endpoint =
-      '/authentication-service/user/userinfo?lang=en&userType=BUYER&orgIdfier=scg&auth=true';
+    const endpoint = '/authentication-service/user/userinfo?lang=en&userType=BUYER&orgIdfier=scg&auth=true';
     console.log('GET', endpoint);
 
     return $axios.$get(endpoint, axiosConfig);
@@ -349,7 +340,7 @@ export default ($axios) => (resource) => ({
       authProvider: resendOTPData.authProvider,
       userId: resendOTPData.userId,
       otpId: resendOTPData.otpId,
-      userParams: resendOTPData.userParams,
+      userParams: resendOTPData.userParams
     };
 
     const endpoint = '/authentication-service/user/OTP/resend';
@@ -373,13 +364,13 @@ export default ($axios) => (resource) => ({
       socialId: registerData.socialId,
       authProvider: registerData.authProvider,
       userId: registerData.userId,
-      customFields: registerData.customFields,
+      customFields: registerData.customFields
     };
     const axiosConfig = {
       headers: {
         signuptoken: signupToken,
-        action,
-      },
+        action
+      }
     };
     const endpoint = '/buyer-service/auth/signup/social';
     console.log('POST', endpoint, payload);
@@ -394,11 +385,10 @@ export default ($axios) => (resource) => ({
       orgIdfier: user.orgIdfier,
       userId: user.userId,
       status: 'OPEN',
-      reason: 'no reason',
+      reason: 'no reason'
     };
 
-    const endpoint =
-      '/buyer-service/auth/user-delete-request/bulk-delete-aging';
+    const endpoint = '/buyer-service/auth/user-delete-request/bulk-delete-aging';
     console.log('PUT', endpoint, payload);
 
     return $axios.$put(endpoint, payload);
@@ -415,7 +405,7 @@ export default ($axios) => (resource) => ({
       newPassword: resetPassData.newPassword,
       orgIdfier: resetPassData.orgIdfier,
       token: resetPassData.token,
-      userType: resetPassData.userType,
+      userType: resetPassData.userType
     };
 
     const endpoint = '/buyer-service/auth/reset-password?b-uid=1.0.475';
@@ -438,7 +428,7 @@ export default ($axios) => (resource) => ({
   },
 
   adminSignup(registerData) {
-    const endpoint = '/buyer-service/auth/signup/customer-service';
+    const endpoint = '/buyer-service/auth/signup/user-service';
     const payload = {
       lang: 'th',
       userType: 'BUYER',
@@ -454,9 +444,9 @@ export default ($axios) => (resource) => ({
       customFields: {
         cookieEnabled: true,
         subscribeNewsletters: true,
-        sharePersonalInfo: true,
+        sharePersonalInfo: true
       },
-      source: null,
+      source: null
     };
     console.log('POST', endpoint, payload);
 
@@ -468,5 +458,5 @@ export default ($axios) => (resource) => ({
     console.log('GET', endpoint);
 
     return $axios.$get(endpoint);
-  },
+  }
 });

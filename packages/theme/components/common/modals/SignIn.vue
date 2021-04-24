@@ -124,9 +124,26 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators';
+import { useUser } from '@vue-storefront/scgcommerce';
+import { onMounted } from '@vue/composition-api';
 
 export default {
   name: 'SignInModal',
+  setup() {
+    const { load, login } = useUser();
+    // console.log({ search, categories });
+    //
+    onMounted(async () => {
+      await login({ username: 'test', password: 'test' });
+      // try {
+      //   await logIn({ username: 'test', password: 'test'});
+      // } catch (error) {
+      //   console.log(error);
+      // }
+    });
+
+    return {};
+  },
   data() {
     return {
       tabs: null,

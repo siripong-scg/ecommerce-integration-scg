@@ -36,9 +36,6 @@ export default {
   plugins: [
     '~plugins/vue-js-modal',
     { src: '~/plugins/vue-tailwind' },
-    { src: '~/plugins/axios', mode: 'server', ssr: true },
-    '~/plugins/auth.js',
-    '~/plugins/repository.js',
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
     '~/plugins/vuelidate'
   ],
@@ -79,15 +76,7 @@ export default {
     project-only-end */
     ['@vue-storefront/scgcommerce/nuxt', {}]
   ],
-  modules: [
-    'nuxt-i18n',
-    'cookie-universal-nuxt',
-    'vue-scrollto/nuxt',
-    '@vue-storefront/middleware/nuxt',
-    '@nuxtjs/axios',
-    '@nuxtjs/auth',
-    '@nuxtjs/proxy'
-  ],
+  modules: ['nuxt-i18n', 'cookie-universal-nuxt', 'vue-scrollto/nuxt', '@vue-storefront/middleware/nuxt'],
   i18n: {
     locales: ['en', 'th'],
     defaultLocale: 'en',
@@ -112,7 +101,6 @@ export default {
     ]
   },
   build: {
-    standalone: true,
     transpile: ['vee-validate/dist/rules'],
     plugins: [
       new webpack.DefinePlugin({
@@ -171,39 +159,6 @@ export default {
     }
   },
   // Auth setting
-  auth: {
-    strategies: {
-      local: {
-        autoFetchUser: false,
-        // user: {
-        //   property: false, // <--- Default "user"
-        //   autoFetch: true
-        // },
-        endpoints: {
-          login: {
-            url: process.env.BACKEND_API + '/api-gateway-service/auth/login',
-            method: 'post',
-            propertyName: 'accessToken'
-          },
-          logout: {
-            url: process.env.BACKEND_API + '/api-gateway-service/auth/logout',
-            method: 'post'
-          },
-          user: {
-            url: process.env.BACKEND_API + '/authentication-service/user/userinfo',
-            method: 'get',
-            propertyName: ''
-          }
-        }
-      }
-    },
-    redirect: {
-      login: '/',
-      logout: '/',
-      callback: '/'
-    },
-    plugins: [{ src: '~/plugins/axios', mode: 'server', ssr: true }, '~/plugins/auth.js']
-  },
   env: {
     BACKEND_API: process.env.BACKEND_API || 'https://qa.big-th.com',
     BASE_URL: process.env.BASE_URL || 'https://qa.big-th.com',
@@ -236,12 +191,6 @@ export default {
   },
 
   // Axios setting
-  axios: {
-    baseURL: process.env.BACKEND_API || 'https://qa.big-th.com',
-    debug: false
-    // credentials: true,
-    // proxy: true
-  },
 
   proxy: {
     '/api': {
